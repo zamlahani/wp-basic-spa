@@ -1,0 +1,127 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+//visibility animation
+@mixin animation-visibility-visible {
+    -webkit-opacity: 1;
+	-ms-opacity: 1;
+    opacity: 1;
+    -webkit-visibility: visible;
+	-ms-visibility: visible;
+	visibility: visible;
+}
+@mixin animation-visibility-hidden {
+    -webkit-opacity: 0;
+	-ms-opacity: 0;
+	opacity: 0;
+    -webkit-visibility: hidden;
+	-ms-visibility: hidden;
+	visibility: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+
+}
+
+//truncate text
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+//horizontally
+.center-horizontal {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+//vertically
+.center-vertical {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+// Media Queries
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+	"wp-phone":     600px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+	"wp-tablet":    782px,
+    "820px":       820px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+@mixin media-query($width, $type: max) {
+    @if map-has-key($breakpoints, $width) {
+        $width: map-get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+//using mq
+// @include media-query('tablet-wide'){
+//     margin-top: 50px;
+// };
+
+@mixin transition($item) {
+  -webkit-transition: $item;
+  -moz-transition: $item;
+  -ms-transition: $item;
+  -o-transition: $item;
+  transition: $item;
+}
+
+@mixin transform($item) {
+  -webkit-transform: $item;
+  -moz-transform: $item;
+  -ms-transform: $item;
+  -o-transform: $item;
+  transform: $item;
+}

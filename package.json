@@ -1,0 +1,21 @@
+{
+    "name": "schoen",
+    "version": "1.0.0",
+    "description": "Schoen",
+    "main": "index.js",
+    "scripts": {},
+    "dependencies": {
+        "gulp-rename": "^1.2.2",
+        "gulp-sourcemaps": "^2.6.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.4",
+        "@babel/preset-env": "^7.4.4",
+        "browser-sync": "^2.26.5",
+        "gulp": "^4.0.1",
+        "gulp-babel": "^8.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-sass": "^4.0.2",
+        "node-sass": "^4.13.1"
+    }
+}
